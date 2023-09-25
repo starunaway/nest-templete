@@ -34,8 +34,13 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(username: string) {
+    const user = await this.userRepository.findOne({
+      where: { username },
+    });
+
+    if (!user) throw new HttpException('用户名不存在', HttpStatus.BAD_REQUEST);
+    return user;
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {

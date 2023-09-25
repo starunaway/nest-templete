@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 import * as path from 'path';
 
 const isProd = process.env.NODE_ENV == 'production';
@@ -23,6 +24,7 @@ const isProd = process.env.NODE_ENV == 'production';
       synchronize: true, //是否自动同步实体文件,生产环境建议关闭
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
