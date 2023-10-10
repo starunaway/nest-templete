@@ -25,6 +25,7 @@ export class AuthGuard implements CanActivate {
       //controller类型
       context.getClass(),
     ]);
+
     if (isPublic) {
       return true;
     }
@@ -37,6 +38,7 @@ export class AuthGuard implements CanActivate {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: this.configService.get('JWT_SECRET'),
       });
+
       request['user'] = payload;
     } catch {
       throw new HttpException('token验证失败', HttpStatus.FORBIDDEN);
