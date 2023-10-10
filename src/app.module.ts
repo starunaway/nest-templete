@@ -7,6 +7,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
+import { MenuModule } from './menu/menu.module';
 import * as path from 'path';
 
 const isProd = process.env.NODE_ENV == 'production';
@@ -29,6 +30,7 @@ const isProd = process.env.NODE_ENV == 'production';
     AuthModule,
     RoleModule,
     PermissionModule,
+    MenuModule,
   ],
   controllers: [AppController],
   providers: [AppService],
