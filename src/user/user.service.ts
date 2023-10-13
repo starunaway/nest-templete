@@ -7,6 +7,7 @@ import { In, Repository } from 'typeorm';
 import { ApiException } from 'src/common/filter/http-exception/api.exception';
 import { ApiErrorCode } from 'src/common/enums/api-error-code.enum';
 import { Role } from 'src/role/entities/role.entity';
+import { CacheService } from 'src/cache/cache.service';
 
 @Injectable()
 export class UserService {
@@ -14,7 +15,8 @@ export class UserService {
     @InjectRepository(User)
     private userRepository: Repository<User>,
     @InjectRepository(Role)
-    private roleRepository: Repository<Role>
+    private roleRepository: Repository<Role>,
+    private cacheService: CacheService
   ) {}
 
   async create(createUserDto: CreateUserDto) {
@@ -65,8 +67,8 @@ export class UserService {
     return `This action removes a #${id} user`;
   }
 
-  test(p: any) {
-    return 'test';
+  async test(testParams) {
+    return await this.cacheService.set('name', 'dfxy');
   }
 
   async findPermissionNames(userInfo: User) {

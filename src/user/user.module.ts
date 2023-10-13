@@ -5,6 +5,7 @@ import { User } from './entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Role } from 'src/role/entities/role.entity';
 import { JwtModule } from '@nestjs/jwt';
+import { CacheModule } from 'src/cache/cache.module';
 
 @Module({
   controllers: [UserController],
@@ -14,6 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
     JwtModule.register({
       secret: process.env.JWT_SECRET,
     }),
+    CacheModule,
   ],
 
   exports: [UserService],

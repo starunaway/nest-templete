@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { RoleModule } from './role/role.module';
 import { PermissionModule } from './permission/permission.module';
 import { MenuModule } from './menu/menu.module';
+import { CacheModule } from './cache/cache.module';
 import * as path from 'path';
 
 const isProd = process.env.NODE_ENV == 'production';
@@ -31,6 +32,7 @@ const isProd = process.env.NODE_ENV == 'production';
     RoleModule,
     PermissionModule,
     MenuModule,
+    CacheModule,
   ],
   controllers: [AppController],
   providers: [AppService],
